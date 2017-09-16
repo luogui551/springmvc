@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/com/aires/base/dao/IOrmDao.java=UTF-8
+encoding//src/com/aires/base/dao/ISqlDao.java=UTF-8
+encoding//src/com/aires/base/dao/sql/MySqlSpringSqlDao.java=UTF-8
+encoding//src/com/aires/base/dao/sql/OracleSpringSqlDao.java=UTF-8
+encoding//src/com/aires/base/page/PageUtils.java=UTF-8
+encoding//src/com/aires/base/service/ISqlService.java=UTF-8
+encoding//src/com/aires/base/spring=UTF-8
+encoding//src/com/aires/base/util/BeanUtils.java=UTF-8
+encoding//src/com/aires/base/util/GenericSupport.java=UTF-8
+encoding/<project>=UTF-8

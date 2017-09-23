@@ -17,6 +17,7 @@ public class Test {
 		}
 		
 		System.out.println(Test.class.getAnnotation(A.class));
+		System.out.println(B.class.getAnnotation(A.class));
 		System.out.println(Test.class.getAnnotation(B.class).getClass().getInterfaces()[0].getAnnotation(A.class));
 	}
 

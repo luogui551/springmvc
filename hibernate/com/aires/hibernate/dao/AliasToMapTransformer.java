@@ -18,7 +18,7 @@ class AliasToMapTransformer extends AbstractTransformer {
 	public Object transformTuple(Object[] tuple, String[] aliases) {
 		Map<String, Object> result = new HashMap<String, Object>(tuple.length);
 		aliases = this.getAliases(aliases);
-		for ( int i=0; i<tuple.length; i++ ) {
+		for ( int i = 0, len = Math.min(tuple.length, aliases.length); i < len; i++ ) {
 			String alias = aliases[i];
 			if ( alias != null ) {
 				result.put( alias, dealClob(tuple[i]));

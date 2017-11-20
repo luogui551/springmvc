@@ -16,6 +16,14 @@ public class Coin extends Bean{
 	private String userId;
 	private int count;
 	
+	public Coin(){}
+	public Coin(String userId){
+		this.userId = userId;
+	}
+	public Coin(String userId, int count){
+		this(userId);
+		this.count = count;
+	}
 	public String getUserId() {
 		return userId;
 	}

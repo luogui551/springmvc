@@ -71,14 +71,14 @@ public abstract class HibernateService<T> extends OrmServiceImpl<T, SpringBasedH
 	 * @param parametersMap请求参数(从其中获取对应数据后，必须删除对应项，否则会重复拼接)
 	 * @return 表示是否已添加where关键字
 	 */
-	protected boolean preQueryHqlBuild(StringBuilder hql, List<Object>params, Map<String, String>parameters){
+	protected boolean preQueryHqlBuild(StringBuilder hql, List<Object>params, Map<String, ? extends Object>parameters){
 		return isLogicBean();//会自动拼接where条件
 	}
 	
 	@Override
-	public Object query(int pageNum, int pageSize, Map<String, String>parameters){
+	public Object query(int pageNum, int pageSize, Map<String, ? extends Object>parameters){
 		StringBuilder hql = new StringBuilder(hqlForAll());
-		String orderBy = parameters.get("orderBy");
+		String orderBy = val(parameters.get("orderBy"));
 		if(orderBy != null)parameters.remove("orderBy");
 		
 		List<Object>params = new ArrayList<Object>(parameters.size());
@@ -159,10 +159,11 @@ public abstract class HibernateService<T> extends OrmServiceImpl<T, SpringBasedH
 	 */
 	protected BaseSqlService sql(){
 		if(sqlService == null){
+			final SqlDAO dao = getDao();
 			sqlService = new BaseSqlService(){
 				@Override
 				protected SqlDAO getDao() {
-					return getDao();
+					return dao;
 				}
 			};
 		}
@@ -290,6 +291,15 @@ public abstract class HibernateService<T> extends OrmServiceImpl<T, SpringBasedH
 	 * @return
 	 */
 	private String hqlForAll(){
-		return "from " + this.getGenericClassName() + (isLogicBean() ? (" where deleted=false") : "");
+		return "from " + this.getGenericClassName() + (isLogicBean() ? (" where deleted!=true") : "");
+	}
+	/**
+	 * 强转
+	 * @param o
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	private <X>X val(Object o){
+		return o == null ? null : (X)o;
 	}
 }

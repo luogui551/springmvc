@@ -23,6 +23,26 @@ public class CoinController {
 	@RequestMapping("/get")
 	@ResponseBody
 	public Coin get(String userId){
-		return coinService.get(userId);
+		Coin c = coinService.get(userId);
+		c.setCount(100);
+		return c;
+	}
+	@RequestMapping("/add")
+	@ResponseBody
+	public Coin add(String userId, int count){
+		Coin coin = coinService.save(new Coin(userId, count));
+		System.out.println("ctrl: " + coin.getId());
+		return coin;
+//		return coinService.add(userId, count);
+	}
+	@RequestMapping("/subtract")
+	@ResponseBody
+	public Coin subtract(String userId, int count){
+		return coinService.subtract(userId, count);
+	}
+	@RequestMapping("/pay")
+	@ResponseBody
+	public void pay(String fromUserId, String toUserId, int count){
+		coinService.pay(fromUserId, toUserId, count);
 	}
 }

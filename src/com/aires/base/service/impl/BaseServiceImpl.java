@@ -56,10 +56,10 @@ public abstract class BaseServiceImpl<X extends DAO> {
 		fieldName = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
 		Method m = null;
 		try {
-			m = clz.getDeclaredMethod("get" + fieldName);
+			m = clz.getMethod("get" + fieldName);
 		} catch (NoSuchMethodException e) {
 			try {
-				m = clz.getDeclaredMethod("is" + fieldName);
+				m = clz.getMethod("is" + fieldName);
 			} catch (NoSuchMethodException e0) {
 			}
 		}

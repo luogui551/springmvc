@@ -96,7 +96,7 @@ public interface OrmService<T> {
 	 * @param parametersMap 查询条件
 	 * @return 可能为PagedList<T>或者List<T>(pageNum = -1 && pageSize = -1)
 	 */
-	public Object query(int pageNum, int pageSize, Map<String, String>parameters);
+	public Object query(int pageNum, int pageSize, Map<String, ? extends Object>parameters);
 	/**
 	 * 根据条件查询单个对象,以等于(=)作为运算符
 	 * @param parameters

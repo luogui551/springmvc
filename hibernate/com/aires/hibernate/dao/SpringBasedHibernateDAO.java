@@ -191,7 +191,7 @@ public abstract class SpringBasedHibernateDAO implements HibernateDAO {
 					@SuppressWarnings("deprecation")
 					Connection conn = session.connection();
 					psmt = conn.prepareStatement(sql);
-					for(Object[]p : params){//未做拆分
+					for(Object[]p : params){//TODO 未做拆分
 						for(int i = 0, len = p.length; i < len; i++){
 							psmt.setObject(i + 1,  p[i]);
 						}

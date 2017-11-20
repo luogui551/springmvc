@@ -8,6 +8,7 @@ import com.aires.bean.Coin;
  * 描述：
  */
 public interface CoinService {
+	Coin save(Coin coin);
 	/**
 	 * 获取指定用户的货币信息
 	 * @param userId

@@ -51,7 +51,7 @@ class AliasToBeanTransformer extends AbstractTransformer  {
 			}
 			result = resultClass.newInstance();
 
-			for (int i = 0; i < aliases.length; i++) {
+			for (int i = 0, len = Math.min(tuple.length, aliases.length); i < len; i++) {
 				Setter setter = setters[i];
 				if(setter != null) {
 					Class<?>type = setter.getMethod().getParameterTypes()[0];

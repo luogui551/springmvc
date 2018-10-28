@@ -9,9 +9,9 @@ import javax.servlet.ServletContextEvent;
 
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.aires.base.hibernate.HibernateUtils;
 import com.aires.base.spring.ds.DynamicDataSource;
 import com.aires.base.spring.util.SpringUtils;
+import com.aires.hibernate.util.HibernateUtils;
 /**
  * 支持一些定制化的操作
  * @author aires

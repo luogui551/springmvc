@@ -11,25 +11,22 @@ import java.util.List;
 public class PagedList<T> {
 	private int pageNo = 1;
 	private int pageSize = 10;
-	private List<T> result = Collections.emptyList();
+	private List<T> data = Collections.emptyList();
 	private int totalCount = 0;
 	private int totalPage = 0;	
 	
 	public PagedList(int pageNo, int pageSize) {
 		super();
 		if(pageNo > 0)
-		this.pageNo = pageNo;
-		if(pageSize > 0)
-		this.pageSize = pageSize;
-	}
-	public PagedList(int pageNo, int pageSize, List<T> result, int totalCount,
-			int totalPage) {
-		super();
-		if(pageNo > 0)
 			this.pageNo = pageNo;
-			if(pageSize > 0)
+		if(pageSize > 0)
 			this.pageSize = pageSize;
-		this.result = result;
+	}
+	public PagedList(int pageNo, int pageSize, List<T> data, int totalCount,
+			int totalPage) {
+		this(pageNo, pageSize);
+		
+		this.data = data;
 		this.totalCount = totalCount;
 		this.totalPage = totalPage;
 	}
@@ -50,11 +47,11 @@ public class PagedList<T> {
 		if(pageSize > 0)
 			this.pageSize = pageSize;
 	}
-	public List<T> getRows() {
-		return result;
+	public List<T> getData() {
+		return data;
 	}
-	public void setRows(List<T> result) {
-		this.result = result;
+	public void setData(List<T> data) {
+		this.data = data;
 	}
 	public int getTotalCount() {
 		return totalCount;
